@@ -41,8 +41,8 @@ yaml
 ### 1. Clone and install
 
 ```bash
-git clone https://github.com/your-username/task-queue-fastapi.git
-cd task-queue-fastapi
+git clone https://github.com/GuruH003/TaskQueue.git
+cd TaskQueue
 pip install -r requirements.txt
 
 
