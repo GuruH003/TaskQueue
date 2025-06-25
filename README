@@ -1,0 +1,64 @@
+# FastAPI Task Queue System
+
+A simplified task queue system built with FastAPI that allows job submission, execution, and status tracking. Designed as a case study for learning and demonstrating backend system design skills.
+
+
+## Features
+
+- Submit background jobs (e.g. email, report generation, data export)
+- Priority-based scheduling: critical/ high/ normal/ low
+- Simple job status tracking (`pending`, `running`, `completed`, `cancelled`)
+- Cancel jobs if they're not started
+- Background job processor using `asyncio`
+- PostgreSQL for persistence
+
+
+## Tech Stack
+
+- FastAPI
+- PostgreSQL
+- SQLAlchemy (async)
+- Alembic (for DB migrations)
+- Uvicorn
+- Docker (optional)
+
+
+
+## Project Structure
+
+app/
+├── main.py # FastAPI app entry
+├── models/ # SQLAlchemy models
+├── routes/ # API endpoints
+├── services/ # (future: job logic, schedulers)
+└── workers/ # Async job processor
+
+migrations/ # Alembic migrations
+
+
+yaml
+
+### 1. Clone and install
+
+```bash
+git clone https://github.com/your-username/task-queue-fastapi.git
+cd task-queue-fastapi
+pip install -r requirements.txt
+
+
+
+alembic upgrade head
+
+
+uvicorn app.main:app --reload
+
+
+
+| Method | Endpoint                | Description            |
+| ------ | ----------------------- | ---------------------- |
+| POST   | `/jobs`                 | Submit a new job       |
+| GET    | `/jobs`                 | List jobs (filterable) |
+| GET    | `/jobs/{job_id}`        | View job details       |
+| PATCH  | `/jobs/{job_id}/cancel` | Cancel pending job     |
+
+
